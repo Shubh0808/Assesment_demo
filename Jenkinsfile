@@ -18,7 +18,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh """
-                    docker build -t $ACR_NAME.azurecr.io/$IMAGE_NAME:latest ./app
+                    docker build -t ${ACR_NAME}.azurecr.io/${IMAGE_NAME}:latest ./app
                 """
             }
         }
@@ -34,11 +34,11 @@ pipeline {
                 ]) {
                     sh """
                         az login --service-principal \
-                            -u "$AZURE_SP_USR" \
-                            -p "$AZURE_SP_PSW" \
+                            -u "${AZURE_SP_USR}" \
+                            -p "${AZURE_SP_PSW}" \
                             --tenant 943ce175-eaca-4be1-a92c-7e492c94921d
 
-                        az acr login --name $ACR_NAME
+                        az acr login --name ${ACR_NAME}
                     """
                 }
             }
@@ -46,7 +46,7 @@ pipeline {
 
         stage('Push Image to ACR') {
             steps {
-                sh "docker push $ACR_NAME.azurecr.io/$IMAGE_NAME:latest"
+                sh "docker push ${ACR_NAME}.azurecr.io/${IMAGE_NAME}:latest"
             }
         }
 
