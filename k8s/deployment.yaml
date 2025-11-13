@@ -14,6 +14,7 @@ spec:
     spec:
       containers:
       - name: python-backend
-        image: <your-acr-name>.azurecr.io/python-backend:latest
+        image: image: demoregistry1234.azurecr.io/python-backend:latest
+
         ports:
         - containerPort: 5000

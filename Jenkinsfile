@@ -4,13 +4,13 @@ pipeline {
     environment {
         ACR_NAME = "demoregistry1234"
         IMAGE_NAME = "python-backend"
-        AZURE_CREDENTIALS = credentials('azure-sp')  // service principal
+        AZURE_CREDENTIALS = credentials('azure-sp') 
     }
 
     stages {
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/yourusername/devsecops-demo.git'
+                git 'https://github.com/Shubh0808/Assesment_demo.git'
             }
         }
 
